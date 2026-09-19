@@ -44,6 +44,7 @@ The current Flash configuration uses 512 KB of Flash and 96 KB of SRAM.
 
 Flash
 0x08000000
+```
 +---------------------------+
 | Bootloader                |
 | 32 KB                     |
@@ -53,7 +54,7 @@ Flash
 |                           |
 | Remaining Flash           |
 +---------------------------+
-
+```
 The application therefore starts at:
 
 0x08008000
