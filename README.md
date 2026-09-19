@@ -11,7 +11,7 @@ The current stage focuses on understanding and implementing the bootloader-to-ap
 ### Work in progress.
 
 The current implementation includes:
-
+```
 Bare-metal STM32F4 firmware
 Custom bootloader and application separation
 32 KB bootloader memory region
@@ -26,16 +26,17 @@ SysTick-based timing
 GPIO alternate-function configuration
 TIM2 configuration
 PWM generation with variable duty cycle
-
+```
 Firmware update, UART/USB transfer, firmware validation, and secure firmware authentication are not implemented yet.
 
 The project is written for an STM32F4 Cortex-M4 target.
 
 The current memory configuration used by the linker scripts is:
-
+```
 Flash:
 Base address : 0x08000000
 Size         : 512 KB
+```
 The clock configuration used by the application is 84 MHz.
 
 ## Memory Layout
@@ -62,7 +63,7 @@ The application therefore starts at:
 ## Development Environment
 
 The project uses the following tools:
-
+```
 ARM GNU Toolchain
 GNU Make
 MSYS2 UCRT64
@@ -72,7 +73,7 @@ OpenOCD
 VS Code
 Cortex-Debug
 J-Link / ST-Link for debugging
-
+```
 libopencm3
 
 The project uses libopencm3 as a low-level hardware abstraction library for STM32 and ARM Cortex-M devices.
@@ -84,16 +85,16 @@ It is included as a Git submodule:
 The submodule is configured in .gitmodules.
 
 The library provides interfaces used by the project for:
-
+```
 Reset and Clock Control
 GPIO
 SysTick
 Timers
 Cortex-M system control
 Vector table handling
-
+```
 ## Build
-
+```
 Initialize the libopencm3 submodule:
 
 git submodule update --init --recursive
@@ -114,16 +115,16 @@ Build the application:
 
 cd app
 make
-
+```
 ## Future Work
 
 Planned extensions include:
-
+```
 Firmware update over UART/USB
 Flash programming from the bootloader
 Firmware integrity verification
 Firmware authentication and secure boot
 Improved boot decision and recovery mechanisms
-
+```
 This repository represents the current development stage of the project.
 
