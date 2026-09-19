@@ -43,8 +43,8 @@ The clock configuration used by the application is 84 MHz.
 The current Flash configuration uses 512 KB of Flash and 96 KB of SRAM.
 
 Flash
-0x08000000
 ```
+0x08000000
 +---------------------------+
 | Bootloader                |
 | 32 KB                     |
