@@ -1,4 +1,4 @@
-STM32 Bare-Metal Firmware & Custom Bootloader
+# STM32 Bare-Metal Firmware & Custom Bootloader
 
 This project is a hands-on study of bare-metal firmware development on an STM32F4 Cortex-M4 microcontroller. It covers the firmware build process, memory layout, startup sequence, peripheral configuration, timer/PWM generation, linker scripts, vector tables, and the basic structure of a custom bootloader.
 
@@ -6,9 +6,9 @@ The project is developed using the ARM GNU toolchain, GNU Make, libopencm3, MSYS
 
 The current stage focuses on understanding and implementing the bootloader-to-application execution flow. Firmware update over a communication interface and firmware authentication are not implemented yet.
 
-Current Status
+## Current Status
 
-Work in progress.
+### Work in progress.
 
 The current implementation includes:
 
@@ -38,7 +38,7 @@ Base address : 0x08000000
 Size         : 512 KB
 The clock configuration used by the application is 84 MHz.
 
-Memory Layout
+## Memory Layout
 
 The current Flash configuration uses 512 KB of Flash and 96 KB of SRAM.
 
@@ -58,7 +58,7 @@ The application therefore starts at:
 
 0x08008000
 
-Development Environment
+## Development Environment
 
 The project uses the following tools:
 
@@ -78,7 +78,7 @@ The project uses libopencm3 as a low-level hardware abstraction library for STM3
 
 It is included as a Git submodule:
 
-libopencm3/
+## libopencm3/
 
 The submodule is configured in .gitmodules.
 
@@ -91,7 +91,7 @@ Timers
 Cortex-M system control
 Vector table handling
 
-Build
+## Build
 
 Initialize the libopencm3 submodule:
 
@@ -114,7 +114,7 @@ Build the application:
 cd app
 make
 
-Future Work
+## Future Work
 
 Planned extensions include:
 
