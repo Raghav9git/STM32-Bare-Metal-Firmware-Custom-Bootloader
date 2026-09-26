@@ -1,5 +1,6 @@
 #include "common-defines.h"
 #include <libopencm3/stm32/memorymap.h>
+#include <libopencm3/cm3/vector.h>
 
 #define BOOTLOADER_SIZE (0x8000U)   // 32 KB bootloader size 
 #define MAIN_APP_START_ADDRESS (FLASH_BASE + BOOTLOADER_SIZE)   // main application start address is set to the base address of the flash memory + size of the bootloader 
@@ -11,6 +12,24 @@ const uint8_t data[0x8000] = {0};       // defining a constant array of 32 KB si
 static void jump_to_main(void) {            
     typedef void (*void_fn)(void);    // defining a function pointer type that points to a function that takes no arguments and retunrns void, this is used to call reset handler of main application 
 
+    vector_table_t* main_vector_table = (vector_table_t*)MAIN_APP_START_ADDRESS;
+    main_vector_table->reset();
+
+    /*
+    uint32_t* main_vector_table = (uint32_t*) (MAIN_APP_START_ADDRESS);
+    void_fn jump_fn = (void_fn)main_vector_table[1];
+    */
+     
+
+    /*
+
+    uint32_t* main_vector_table = (uint32_t*) (MAIN_APP_START_ADDRESS);
+    uint32_t* reset_vector = (uint32_t*) (main_vector_table[1]);
+    void_fn jump_fn = (void_fn)reset_vector;     // casting the reset vector 
+
+    */
+
+    /*
 
     uint32_t* reset_vector_entry = (uint32_t*)(MAIN_APP_START_ADDRESS + 4U);    // reset vector is set to or pointed to the address of main application start address
     // why 4U - because each entry in the IVT is 4 bytes long, and reset vector is the second entry because 1st entry is the initial stack pointer value, which is located at start (0x0800_8000) and reset vector is at (0x0800_8004), 4 bytes after
@@ -19,6 +38,9 @@ static void jump_to_main(void) {
     // dereferening helps to access or modify the data stored at the memory location pointed by the pointer 
 
     void_fn jump_fn = (void_fn)reset_vector;     // casting the reset vector 
+
+    */
+
 
     jump_fn();           // 
 
